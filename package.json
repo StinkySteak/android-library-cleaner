@@ -1,0 +1,15 @@
+{
+  "name": "com.stinkysteak.android-library-cleaner",
+  "version": "0.1.0",
+  "displayName": "Android Library Cleaner",
+  "description": "Editor Helper to clean Android Library when building to solve issues",
+  "unity": "2021.3",
+  "documentationUrl": "https://github.com/StinkySteak/netcode-benchmarker-util",
+  "changelogUrl": "https://github.com/StinkySteak/netcode-benchmarker-util/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/StinkySteak/netcode-benchmarker-util/blob/main/LICENSE",
+  "author": {
+    "name": "Stinkysteak",
+    "email": "stinkysteak@steaksoft.com",
+    "url": "https://steaksoft.net"
+  }
+}
