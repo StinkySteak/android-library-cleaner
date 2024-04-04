@@ -1,3 +1,4 @@
+using System.Drawing.Printing;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build;
@@ -12,12 +13,17 @@ namespace StinkySteak.LibraryCleaner.Android
 
         public virtual string DATA_PATH => string.Empty;
 
-        public void OnPreprocessBuild(BuildReport report)
+        public virtual void OnPreprocessBuild(BuildReport report)
+        {
+            
+        }
+
+        public virtual void ProcessCleanCache() 
         {
             Debug.Log($"[{nameof(BaseAndroidLibraryCleaner)}] Pre-processing build...");
 
             if (!ValidatePath()) return;
-            
+
             if (!TryGetData(out AndroidLibraryCleanerConfig data))
             {
                 Debug.LogError($"[{nameof(BaseAndroidLibraryCleaner)}]: {nameof(AndroidLibraryCleanerConfig)} Not Found!");
@@ -33,7 +39,7 @@ namespace StinkySteak.LibraryCleaner.Android
         {
             if (!Directory.Exists(GetCacheFolderPath()))
             {
-                Debug.Log($"[{nameof(BaseAndroidLibraryCleaner)}]: Directory is not exist");
+                Debug.LogError($"[{nameof(BaseAndroidLibraryCleaner)}]: Directory is not exist");
                 return;
             }
 
@@ -50,6 +56,8 @@ namespace StinkySteak.LibraryCleaner.Android
 
         public bool ValidatePath()
         {
+            Debug.Log("ValidatePath");
+
             if (string.IsNullOrEmpty(DATA_PATH))
             {
                 Debug.LogError($"[{nameof(BaseAndroidLibraryCleaner)}]: {nameof(DATA_PATH)} is not implemented! Override the path to use.");

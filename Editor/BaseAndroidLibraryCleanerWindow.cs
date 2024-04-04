@@ -22,6 +22,8 @@ namespace StinkySteak.LibraryCleaner.Android
         {
             DrawCleanCache();
             EditorGUILayout.Space(10);
+
+            DrawValidateCleanerPath();
             DrawScanData();
         }
 
@@ -47,6 +49,21 @@ namespace StinkySteak.LibraryCleaner.Android
 
                 _cleaner.TryGetData(out AndroidLibraryCleanerConfig data);
                 Debug.Log($"[{nameof(BaseAndroidLibraryCleaner)}]: Data is exist: {data != null}");
+            }
+        }
+
+        private void DrawValidateCleanerPath()
+        {
+            if (GUILayout.Button("Validate Cleaner Data Path"))
+            {
+                bool isValid = _cleaner.ValidatePath();
+
+                if (isValid)
+                {
+                    Debug.Log($"[{nameof(BaseAndroidLibraryCleaner)}]: Path is valid");
+                    return;
+                }
+                Debug.LogError($"[{nameof(BaseAndroidLibraryCleaner)}]: Path is invalid!");
             }
         }
     }
