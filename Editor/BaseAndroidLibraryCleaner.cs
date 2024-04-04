@@ -56,8 +56,6 @@ namespace StinkySteak.LibraryCleaner.Android
 
         public bool ValidatePath()
         {
-            Debug.Log("ValidatePath");
-
             if (string.IsNullOrEmpty(DATA_PATH))
             {
                 Debug.LogError($"[{nameof(BaseAndroidLibraryCleaner)}]: {nameof(DATA_PATH)} is not implemented! Override the path to use.");
